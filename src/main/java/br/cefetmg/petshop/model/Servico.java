@@ -1,32 +1,28 @@
 package br.cefetmg.petshop.model;
 
-import java.math.BigDecimal;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "servico") 
+@Builder
+@Entity
 public class Servico {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome", length = 20, nullable = false, unique = false)
+    @Column(name = "nome", nullable = false, length = 50)
     private String nome;
 
-    @Column(name = "valor", precision = 10, scale = 2, nullable = false, unique = false)
-    private BigDecimal valor;
+    @Column(name = "preco", nullable = false)
+    private BigDecimal preco;
 
 }
